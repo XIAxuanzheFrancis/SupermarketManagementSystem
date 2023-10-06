@@ -41,24 +41,24 @@ public class BaseDao {
   }
 
   //Méthode d'enquête publique
-  public static ResultSet execute(Connection connection, String sql, Object[] params,ResultSet resultSet)
+  public static ResultSet execute(Connection connection, String sql, Object[] params,ResultSet resultSet, PreparedStatement preparedStatement)
       throws SQLException {
-    PreparedStatement s = connection.prepareStatement(sql);
+    preparedStatement = connection.prepareStatement(sql);
     for (int i = 0; i < params.length; i++) {
-      s.setObject(i+1,params[i]);
+      preparedStatement.setObject(i+1,params[i]);
     }
-    resultSet = s.executeQuery();
+    resultSet = preparedStatement.executeQuery();
     return resultSet;
   }
 
   //Méthodes publiques d'ajout, de suppression et de modification
-  public static int execute(Connection connection, String sql, Object[] params)
+  public static int execute(Connection connection, String sql, Object[] params, PreparedStatement preparedStatement)
       throws SQLException {
-    PreparedStatement s = connection.prepareStatement(sql);
+    preparedStatement = connection.prepareStatement(sql);
     for (int i = 0; i < params.length; i++) {
-      s.setObject(i+1,params[i]);
+      preparedStatement.setObject(i+1,params[i]);
     }
-    int updateRows = s.executeUpdate();
+    int updateRows = preparedStatement.executeUpdate();
     return updateRows;
   }
 
