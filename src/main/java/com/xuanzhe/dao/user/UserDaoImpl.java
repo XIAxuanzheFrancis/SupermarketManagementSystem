@@ -41,5 +41,6 @@ public class UserDaoImpl implements UserDao {
         e.printStackTrace();
       }
     }
+    return user;
   }
 }

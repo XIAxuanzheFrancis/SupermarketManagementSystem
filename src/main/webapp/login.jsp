@@ -18,7 +18,7 @@
             <h1>SupermarketManagementSystem</h1>
         </header>
         <section class="loginCont">
-	        <form class="loginForm" action="${pageContext.request.contextPath }/login.do"  name="actionForm" id="actionForm"  method="post" >
+	        <form class="loginForm" action="${pageContext.request.contextPath }/login"  name="actionForm" id="actionForm"  method="post" >
 				<div class="info">${error}</div>
 				<div class="inputbox">
                     <label for="userCode">user ID：</label>

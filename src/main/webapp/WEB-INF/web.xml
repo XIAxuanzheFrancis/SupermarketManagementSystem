@@ -36,6 +36,16 @@
     <filter-name>EncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+  <servlet>
+    <servlet-name>loginController</servlet-name>
+    <servlet-class>com.xuanzhe.controller.user.LoginController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>loginController</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
 
   <!--Setting up the home page (welcome page)-->
   <welcome-file-list>
