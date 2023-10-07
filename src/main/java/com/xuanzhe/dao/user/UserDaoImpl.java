@@ -20,7 +20,7 @@ public class UserDaoImpl implements UserDao {
 
       try {
         resultSet = BaseDao.execute(connection, sql, params, resultSet, preparedStatement);
-        if(resultSet.next()){
+        if (resultSet.next()) {
           user = new User();
           user.setId(resultSet.getInt("id"));
           user.setUserCode(resultSet.getString("userCode"));
@@ -36,11 +36,24 @@ public class UserDaoImpl implements UserDao {
           user.setModifyBy(resultSet.getInt("modifyBy"));
           user.setModifyDate(resultSet.getTimestamp("modifyDate"));
         }
-        BaseDao.closeResource(null,preparedStatement,resultSet);
+        BaseDao.closeResource(null, preparedStatement, resultSet);
       } catch (SQLException e) {
         e.printStackTrace();
       }
     }
     return user;
+  }
+
+  @Override
+  public int updatePwd(Connection connection, int id, String password) throws SQLException {
+    PreparedStatement preparedStatement = null;
+    int execute = 0;
+    if (connection != null) {
+      String sql = "update smbms_user set userPassword = ? where id = ?";
+      Object params[] = {password, id};
+      execute = BaseDao.execute(connection, sql, params, preparedStatement);
+      BaseDao.closeResource(null, preparedStatement, null);
+    }
+    return execute;
   }
 }
