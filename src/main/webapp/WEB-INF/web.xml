@@ -47,6 +47,16 @@
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
 
+  
+  <servlet>
+    <servlet-name>logoutController</servlet-name>
+    <servlet-class>com.xuanzhe.controller.user.LogoutController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logoutController</servlet-name>
+    <url-pattern>/jsp/logout.do</url-pattern>
+  </servlet-mapping>
+  
   <!--Setting up the home page (welcome page)-->
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
