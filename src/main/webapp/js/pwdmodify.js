@@ -32,35 +32,35 @@ $(function(){
 			},
 			error:function(data){
 				//请求出错
-				validateTip(oldpassword.next(),{"color":"red"},imgNo + " 请求错误",false);
+				validateTip(oldpassword.next(),{"color":"red"},imgNo + " request error",false);
 			}
 		});
 		
 		
 	}).on("focus",function(){
-		validateTip(oldpassword.next(),{"color":"#666666"},"* 请输入原密码",false);
+		validateTip(oldpassword.next(),{"color":"#666666"},"* Please enter the original password",false);
 	});
 	
 	newpassword.on("focus",function(){
-		validateTip(newpassword.next(),{"color":"#666666"},"* 密码长度必须是大于6小于20",false);
+		validateTip(newpassword.next(),{"color":"#666666"},"* Password length must be greater than 6 and less than 20",false);
 	}).on("blur",function(){
 		if(newpassword.val() != null && newpassword.val().length > 5
 				&& newpassword.val().length < 20 ){
 			validateTip(newpassword.next(),{"color":"green"},imgYes,true);
 		}else{
-			validateTip(newpassword.next(),{"color":"red"},imgNo + " 密码输入不符合规范，请重新输入",false);
+			validateTip(newpassword.next(),{"color":"red"},imgNo + " The password is not entered correctly, please re-enter it",false);
 		}
 	});
 	
 	
 	rnewpassword.on("focus",function(){
-		validateTip(rnewpassword.next(),{"color":"#666666"},"* 请输入与上面一致的密码",false);
+		validateTip(rnewpassword.next(),{"color":"#666666"},"* Please enter the same password as above",false);
 	}).on("blur",function(){
 		if(rnewpassword.val() != null && rnewpassword.val().length > 5
 				&& rnewpassword.val().length < 20 && newpassword.val() == rnewpassword.val()){
 			validateTip(rnewpassword.next(),{"color":"green"},imgYes,true);
 		}else{
-			validateTip(rnewpassword.next(),{"color":"red"},imgNo + " 两次密码输入不一致，请重新输入",false);
+			validateTip(rnewpassword.next(),{"color":"red"},imgNo + " Two passwords do not match, please re-enter",false);
 		}
 	});
 	
@@ -69,10 +69,11 @@ $(function(){
 		oldpassword.blur();
 		newpassword.blur();
 		rnewpassword.blur();
-		if(oldpassword.attr("validateStatus") == "true" 
-			&& newpassword.attr("validateStatus") == "true"
+		/*oldpassword.attr("validateStatus") == "true"
+			&& */
+		if(newpassword.attr("validateStatus") == "true"
 			&& rnewpassword.attr("validateStatus") == "true"){
-			if(confirm("确定要修改密码？")){
+			if(confirm("Make sure you want to change your password？")){
 				$("#userForm").submit();
 			}
 		}

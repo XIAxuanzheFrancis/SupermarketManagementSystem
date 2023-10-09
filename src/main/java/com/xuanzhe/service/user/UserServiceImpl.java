@@ -4,6 +4,7 @@ import com.xuanzhe.dao.BaseDao;
 import com.xuanzhe.dao.user.UserDao;
 import com.xuanzhe.dao.user.UserDaoImpl;
 import java.sql.Connection;
+import java.sql.SQLException;
 import org.junit.Test;
 import pojo.User;
 
@@ -31,4 +32,16 @@ public class UserServiceImpl implements UserService{
   }
 
    */
+
+  @Override
+  public boolean updatePwd(int id, String password) throws SQLException {
+    Connection connection = null;
+    boolean flag = false;
+    connection = BaseDao.getConnection();
+    if(userDao.updatePwd(connection,id,password)>0){
+      flag = true;
+    }
+    BaseDao.closeResource(connection,null,null);
+    return flag;
+  }
 }
